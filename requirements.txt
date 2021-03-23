@@ -1,0 +1,9 @@
+Cython==0.29.21
+filterpy==1.4.5
+ipython==7.19.0
+jupyterlab==3.0.0
+numpy==1.19.4
+opencv-python==4.4.0.46
+pafy==0.5.5
+rich==6.2.0
+youtube-dl==2021.3.14
