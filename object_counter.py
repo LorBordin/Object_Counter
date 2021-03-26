@@ -31,7 +31,6 @@ prev_objs = Memory()
 if args.get("output", False):
     fourcc = cv2.VideoWriter_fourcc(*"MJPG")
     video_path = args["output"]
-    fps = 24
     writer = None
 
 # Start the video stream 
@@ -52,10 +51,17 @@ while True:
         barrier_1.compute_rect_equation()
     
     # get persons and ppes
-    objects, _, _ = yolo_coco.predict(frame)
+    t1 = time.time()
+    objects, class_ids, _ = yolo_coco.predict(frame)
+    t2 = time.time()
+    
+    if n_frames==0:
+        fps = (1 / (t2-t1))
     
     # select just cars
-    objects = objects[objects[:,0]==3]
+    objects = objects[class_ids==2]
+
+    print("cars: ", objects)
 
     # update tracker
     objects, ids = tracker.update(objects, (W,H))

@@ -34,7 +34,7 @@ class Barrier():
         X1, X2 = (self.Xt, self.Yt),  (self.Xb, self.Yb)
         cv2.line(frame, X1, X2, green, 2)
         if show_counter:
-            text = f"People count: {self.counter}"
+            text = f"Object count: {self.counter}"
             cv2.rectangle(frame, (0, 0), (len(text) * 20, 50), black, 2)
             cv2.rectangle(frame, (0, 0), (len(text) * 20, 50), white, -1)
             cv2.putText(frame, text ,(15, 31), 0, 1, black, 2)
