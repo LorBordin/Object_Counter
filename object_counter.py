@@ -31,7 +31,10 @@ prev_objs = Memory()
 if args.get("output", False):
     fourcc = cv2.VideoWriter_fourcc(*"MJPG")
     video_path = args["output"]
+    fps = 24
     writer = None
+
+print("[INFO] Processing video...")
 
 # Start the video stream 
 start = time.time()
@@ -55,13 +58,8 @@ while True:
     objects, class_ids, _ = yolo_coco.predict(frame)
     t2 = time.time()
     
-    if n_frames==0:
-        fps = (1 / (t2-t1))
-    
     # select just cars
     objects = objects[class_ids==2]
-
-    print("cars: ", objects)
 
     # update tracker
     objects, ids = tracker.update(objects, (W,H))
@@ -88,7 +86,8 @@ while True:
         if writer is None:
             writer = cv2.VideoWriter(video_path, fourcc, fps, (W, H), True)
         writer.write(frame)
-    
+
+    print(f"\r[INFO] Processed  {n_frames}th frame...", end="")
     n_frames += 1
     
 end = time.time()
