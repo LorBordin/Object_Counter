@@ -28,12 +28,12 @@ To detect the objects the program uses a [Yolo network](https://github.com/Alexe
 
 **Optional arguments:**
 	
-  `-m MODE`: *Options: *counter* or *gate_crossing** 	
-  `-v VIDEO_PATH`: Path to input video	
-  `-y YOUTUBE_URL`: YouTube video URL	
-  `-o VIDEO_PATH`: Path to output video		
-  `-s 0_or_1`: If 0 doesn't show the live output - deafult 1	                   
-  `-l GATE_COORDS`: Gate coords - format: `"[Xt,Yt] [Xb,Yb]"`	
+  `-m MODE`: *Options: *counter* or *gate_crossing**  
+  `-v VIDEO_PATH`: Path to input video  
+  `-y YOUTUBE_URL`: YouTube video URL  
+  `-o VIDEO_PATH`: Path to output video  
+  `-s 0_or_1`: If 0 doesn't show the live output - deafult 1  
+  `-l GATE_COORDS`: Gate coords - format: `"[Xt,Yt] [Xb,Yb]"`  
   `-c CLASS`: Object class. Options: *person*, *bicycle*, *car*
 
 ### To use your custom weights
