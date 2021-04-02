@@ -36,7 +36,7 @@ To detect the objects the program uses a [Yolo network](https://github.com/Alexe
   `-l GATE_COORDS`: Gate coords - format: `"[Xt,Yt] [Xb,Yb]"`  
   `-c CLASS`: Object class. Options: *person*, *bicycle*, *car*
   
-**Notice:** If you use the demo in the `gate_crossing` mode without the flag `-l`, a  you have to choose the gate coordinates by clicking two points on the video (a window will pop up).
+**Notice:** if you use the demo in the `gate_crossing` mode without the flag `-l`, you have to choose the gate coordinates by clicking two points on the video (a window will pop up).
 
 ### To use your custom weights
 
