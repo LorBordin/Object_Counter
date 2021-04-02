@@ -28,16 +28,6 @@ class Barrier():
         self.slope = (self.Yb - self.Yt) / (self.Xb - self.Xt)
         self.q = self.Yt - self.slope * self.Xt
         self.counter = 0
-
-    def draw_barrier(self, frame, obj_name,  show_counter=True):
-        """ Draw the gate on frame """
-        X1, X2 = (self.Xt, self.Yt),  (self.Xb, self.Yb)
-        cv2.line(frame, X1, X2, green, 2)
-        if show_counter:
-            text = f"Object count: {self.counter}"
-            cv2.rectangle(frame, (0, 0), (len(text) * 20, 50), black, 2)
-            cv2.rectangle(frame, (0, 0), (len(text) * 20, 50), white, -1)
-            cv2.putText(frame, text ,(15, 31), 0, 1, black, 2)
     
     def count_objects(self, skiers, prev_skiers):
         for idx, curr_pos in skiers.items():

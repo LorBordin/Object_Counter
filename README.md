@@ -1,8 +1,8 @@
 # Object Counter
 
-Simple program object detction and counting. There are two working modes, in the first it counts the number of objets detected in the scene, in the second only those which cross a given gate. 
+Simple program object for detection and counting. There are two working modes, count objects (in the scene) or gate crossing count. 
 
-For object detction the program uses a [Yolo network](https://github.com/AlexeyAB/darknet). While the demo version comes with a pretrained model that can detect persons, bicycles or cars, you can provide any model trained to detect your custom objects.
+To detect the objects the program uses a [Yolo network](https://github.com/AlexeyAB/darknet). While the demo version comes with a pretrained model that can detect persons, bicycles or cars, `object_count.py` is suited to detect custom objects. In that case you must provide a trained model.
 
 <div align="center">
 	<h4>Counting mode</h4>

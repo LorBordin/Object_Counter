@@ -41,3 +41,14 @@ def draw_object_bbox(img, coords, ids, print_info=True):
             text = f"Id {Id}"
             cv2.rectangle(img, (Xmin, Ymin-20), (Xmin + len(text) * 10, Ymin), white, -1)
             cv2.putText(img, text ,(Xmin, Ymin-5), 0, .5, blue, 1)
+
+
+def draw_counter(img, obj_name, object_n, gate_coords=None):
+    text = f"{obj_name} count: {object_n}"
+    cv2.rectangle(img, (0, 0), (len(text) * 20, 50), black, 2)
+    cv2.rectangle(img, (0, 0), (len(text) * 20, 50), white, -1)
+    cv2.putText(img, text ,(15, 31), 0, 1, black, 2)
+
+    if gate_coords is not None:
+        X1, X2 = gate_coords
+        cv2.line(img, X1, X2, green, 2)
