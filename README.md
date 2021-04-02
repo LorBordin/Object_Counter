@@ -4,12 +4,13 @@ Simple program object detction and counting. There are two working modes, in the
 
 For object detction the program uses a [Yolo network](https://github.com/AlexeyAB/darknet). While the demo version comes with a pretrained model that can detect persons, bicycles or cars, you can provide any model trained to detect your custom objects.
 
-<video width="400" controls="controls" preload="metadata">
-  <source src="https://github.com/LorBordin/object_counter/master/examples/cars.mp4" type="video/mp4">
-</video>
+<div align="center">
+<img src="https://raw.githubusercontent.com/object_counter/master/examples/cars.gif">
+</div> 
+<br>
+<br>
 
-
-![Alt Image Text](https://github.com/LorBordin/object_counter/blob/master/examples/cars.mp4)
+![Alt Image Text](https://github.com/LorBordin/object_counter/master/examples/cars.gif)
 
 ## Setup
 
