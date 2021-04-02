@@ -4,13 +4,13 @@ Simple program object detction and counting. There are two working modes, in the
 
 For object detction the program uses a [Yolo network](https://github.com/AlexeyAB/darknet). While the demo version comes with a pretrained model that can detect persons, bicycles or cars, you can provide any model trained to detect your custom objects.
 
-<center> <h4>Counting mode</h4> </center>
 <div align="center">
+	<h4>Counting mode</h4>
 	<img src="https://raw.githubusercontent.com/LorBordin/object_counter/master/examples/football.gif" width="500">
 </div> 
 
-<center> <h4>Gate Crossing mode</h4> </center>
 <div align="center">
+	<h4>Gate Crossing mode</h4>
 	<img src="https://raw.githubusercontent.com/LorBordin/object_counter/master/examples/cars.gif" width="500">
 </div> 
 
