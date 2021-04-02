@@ -4,13 +4,16 @@ from tools import SortTracker
 from tools import Options
 from tools import YoloDarknet
 from tools import Barrier
-from tools import VideoGet
 from tools import Memory
+from tools import VideoGet
 import config as cfg
 import numpy as np
 import time
 import cv2
 import sys
+
+black = (0,0,0)
+white = (255,255,255)
 
 # Set up flags
 opt = Options()
@@ -21,15 +24,13 @@ yolo_coco = YoloDarknet(cfg.coco_labels, cfg.coco_weights, cfg.coco_config, .2, 
 tracker = SortTracker()
 
 # Set the variables
-cam = VideoGet(src=args["video_path"])
-cam.start()
-n_frames = 0
+cam = cv2.VideoCapture(args["video_path"], cv2.CAP_ANY) 
 obj_name = args["class"].capitalize()
 
 if args["mode"]=="gate_crossing":
     barrier = Barrier(get_line=args["get_line"], coord1=args["X1"], coord2=args["X2"])
     prev_objs = Memory()
-    frame = cam.frame.copy()
+    _, frame = cam.read()
     barrier.get_line_coords(frame)
     if args["mode"]=="gate_crossing" and n_frames==0:    
         barrier.compute_rect_equation()
@@ -44,21 +45,30 @@ if args.get("output", False):
 print("[INFO] Processing video...")
 
 # Start the video stream 
+n_frames = 0
 start = time.time()
+
 while True:
     
     # grab frame from video
-    if cam.grabbed:
-        frame = cam.frame.copy()
-        H, W = frame.shape[:2]
-    else:
+    grabbed, frame = cam.read()
+    
+    if not grabbed:
         break
+    
+    H, W = frame.shape[:2]
+
     
     # get persons and ppes
     objects, class_ids, _ = yolo_coco.predict(frame)
     
-    # select just cars
-    objects = objects[class_ids==args["class"]]
+    # select just the desidered class
+    objects = objects[class_ids==args["class_index"]]
+    
+    #remove the large "people" bbox
+    if args["class"]=="person":
+        small_boxes = (objects[:,2:]/(W,H)<.9).all(axis=1)
+        objects = objects[small_boxes]
 
     # update tracker
     objects, ids = tracker.update(objects, (W,H))
@@ -99,7 +109,6 @@ while True:
 end = time.time()
 cv2.destroyAllWindows()
 print("[INFO] Avg fps: {:.2f}.".format(n_frames/(end-start)))
-cam.stop()
 sys.exit()
 
 

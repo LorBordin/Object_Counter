@@ -45,10 +45,10 @@ class Options():
             args["video_path"] = best.url
 
         if args["class"]=="person":
-            args["class"] = 0 
+            args["class_index"] = 0 
         elif args["class"]=="bicycle":
-            args["class"] = 1
+            args["class_index"] = 1
         else:
-            args["class"] = 2
+            args["class_index"] = 2
 
         return args
