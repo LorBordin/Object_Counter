@@ -6,16 +6,20 @@ class Options():
     """ Initial settings """
     def __init__(self):
         self.parser = argparse.ArgumentParser()
+        self.parser.add_argument("-m", "--mode", required=True,
+            help="Options: counter or gate_crossing")
         self.parser.add_argument("-v", "--video_path",
             help="Path to input video")
         self.parser.add_argument("-o", "--output", 
             help="[Optional] Path to output video")
         self.parser.add_argument("-s", "--show_output", type=int, default=1,
-            help="If 0 it does not show the live outut")
+            help="If 0 it does not show the live output")
         self.parser.add_argument("-l", "--coords", 
             help="line coords - format: '[Xt,Yt] [Xb,Yb]'")
-        self.parser.add_argument("-u", "--youtube_url", type=int, default=0,
-            help="if 1 allows to get video from YouTube")
+        self.parser.add_argument("-y", "--youtube",
+            help="path to a YouTube video (url)")
+        self.parser.add_argument("-c", "--class", default="person", 
+            help="Object name. Options: person, bicycle, car")
         
     def parse(self):
         args = vars(self.parser.parse_args())
@@ -34,10 +38,17 @@ class Options():
         args["X1"], args["X2"] = x1, x2
         args["get_line"] = get_line
 
-        if args["youtube_url"]:
-            url = args["video_path"]
+        if args.get("youtube", False):
+            url = args["youtube"]
             video = pafy.new(url)
             best = video.getbest(preftype="mp4")
             args["video_path"] = best.url
+
+        if args["class"]=="person":
+            args["class"] = 0 
+        elif args["class"]=="bicycle":
+            args["class"] = 1
+        else:
+            args["class"] = 2
 
         return args

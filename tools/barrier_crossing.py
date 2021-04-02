@@ -29,7 +29,7 @@ class Barrier():
         self.q = self.Yt - self.slope * self.Xt
         self.counter = 0
 
-    def draw_barrier(self, frame, show_counter=True):
+    def draw_barrier(self, frame, obj_name,  show_counter=True):
         """ Draw the gate on frame """
         X1, X2 = (self.Xt, self.Yt),  (self.Xb, self.Yb)
         cv2.line(frame, X1, X2, green, 2)
