@@ -12,9 +12,6 @@ import time
 import cv2
 import sys
 
-black = (0,0,0)
-white = (255,255,255)
-
 # Set up flags
 opt = Options()
 args  = opt.parse()
@@ -72,6 +69,9 @@ while True:
     # update tracker
     objects, ids = tracker.update(objects, (W,H))
 
+    # draw results
+    draw_object_bbox(frame, objects, ids)
+    
     # update counter
     if args["mode"]=="gate_crossing":
         p_pos = np.vstack([objects[:, 0]+objects[:, 2]/2, objects[:,1]+objects[:, 3]]).transpose() 
@@ -83,12 +83,8 @@ while True:
         draw_counter(frame, obj_name, barrier.counter, gate_coords=gate_coords)
     else:
         draw_counter(frame, obj_name, len(objects))
-  
-
-    # draw results
-    draw_object_bbox(frame, objects, ids)
     
-    if args.get("show_output", False):
+    if args["show_output"]:
         cv2.imshow("canvas", frame)
         key = cv2.waitKey(1)
         if key & 0xFF == ord("q"):

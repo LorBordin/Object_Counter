@@ -20,6 +20,12 @@ class Options():
             help="path to a YouTube video (url)")
         self.parser.add_argument("-c", "--class", default="person", 
             help="Object name. Options: person, bicycle, car")
+        self.parser.add_argument("-names", "--names", 
+            help="path to .names file")
+        self.parser.add_argument("-cfg", "--config", 
+            help="path to .cfg file")
+        self.parser.add_argument("-weights", "--weights", 
+            help="path to .weights file")
         
     def parse(self):
         args = vars(self.parser.parse_args())
