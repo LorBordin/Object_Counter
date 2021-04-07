@@ -46,8 +46,7 @@ Run
 `python object_counter.py -m counter -v PATH_TO_INPUT_VIDEO -cfg PATH_TO_CFG \ `   
 `-weights PATH_TO_WEIGHTS -names PATH_TO_NAMES`
 
-**Custom weights demo:**  
-Try it out on [Google Colab](https://colab.research.google.com/drive/1T6PTiP497MXX8ILQYEb39pP1aG_12pQP?usp=sharing): build a T-rex counter! 
+**NEW** Try it out on [Google Colab](https://github.com/LorBordin/object_counter/blob/master/notebooks/T_rex_counter.ipynb): build a T-rex counter! 
 
 <div align="center">
 	<img src="https://raw.githubusercontent.com/LorBordin/object_counter/master/examples/t-rex_run.gif" width="500">
