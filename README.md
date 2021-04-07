@@ -40,4 +40,15 @@ To detect the objects the program uses a [Yolo network](https://github.com/Alexe
 
 ### To use your custom weights
 
-Coming soon...
+To use your custo Yolo model you must provide the path to the Yolo `.cfg`, `.weights` and `.names` files. 
+Run 
+
+`python object_counter.py -m counter -v PATH_TO_INPUT_VIDEO -cfg PATH_TO_CFG \ `   
+`-weights PATH_TO_WEIGHTS -names PATH_TO_NAMES`
+
+**Custom weights demo:**  
+Try it out on [Google Colab](link): build a T-rex counter! 
+
+<div align="center">
+	<img src="https://raw.githubusercontent.com/LorBordin/object_counter/master/examples/t-rex_run.gif" width="500">
+</div> 
