@@ -47,7 +47,7 @@ Run
 `-weights PATH_TO_WEIGHTS -names PATH_TO_NAMES`
 
 **Custom weights demo:**  
-Try it out on [Google Colab](link): build a T-rex counter! 
+Try it out on [Google Colab](https://colab.research.google.com/drive/1T6PTiP497MXX8ILQYEb39pP1aG_12pQP?usp=sharing): build a T-rex counter! 
 
 <div align="center">
 	<img src="https://raw.githubusercontent.com/LorBordin/object_counter/master/examples/t-rex_run.gif" width="500">
